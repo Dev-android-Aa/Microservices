@@ -1,0 +1,15 @@
+services:
+  catalogdb:
+    image: mongo:latest
+
+  catalog.apis:
+    image: ${DOCKER_REGISTRY-}catalogapis
+    build:
+      context: .
+      dockerfile: Services\Catalog\Catalog.Apis\Dockerfile
+
+  mongoclient:
+    image: mongoclient/mongoclient
+
+volumes:
+  mongo_data :
